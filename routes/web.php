@@ -15,4 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::resource('shop', 'ShopController');
+Route::resource('user', 'UserController');
+
