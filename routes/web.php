@@ -18,4 +18,4 @@ Route::get('/', function () {
 
 Route::resource('shop', 'ShopController');
 Route::resource('user', 'UserController');
-
+Route::resource('item', 'ItemController');
