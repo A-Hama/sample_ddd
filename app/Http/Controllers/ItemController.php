@@ -13,7 +13,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::all
     }
 
     /**
@@ -43,9 +43,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(itemId $itemId)
     {
-        //
+        $item = Item::findOrFail($itemId)
     }
 
     /**

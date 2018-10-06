@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'auth'], function() {
+  Route::resource('shops', 'ShopController', ['except' => ['index', 'show']]);
+  Route::resource('items', 'ItemController', ['except' => ['index', 'show']]);
 });
 
 
-Route::resource('shop', 'ShopController');
-Route::resource('user', 'UserController');
-Route::resource('item', 'ItemController');
+Route::group(['middleware' => 'guest'], function(){
+  Route::resource('shops', 'ShopController', ['only' => ['index', 'show']]);
+  Route::resource('items', 'ItemController', ['only' => ['index', 'show']]);
+});
