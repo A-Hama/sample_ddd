@@ -13,7 +13,8 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::all
+        #DDDではここをQueryModelに閉じ込める
     }
 
     /**
@@ -43,9 +44,9 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(shopId $shopId, itemId $itemId)
     {
-        //
+        $item = Item::findBy($shopId, $itemId)
     }
 
     /**
