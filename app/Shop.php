@@ -10,4 +10,9 @@ class Shop extends Model
     {
       return $this->hasMany('App/Item');
     }
+
+    public function brand()
+    {
+      return $this->belongsTo('App\Brand')
+    }
 }
