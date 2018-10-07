@@ -10,4 +10,9 @@ class Item extends Model
     {
       return $this->belongsTo('App\Shop');
     }
+
+    public function singleItem()
+    {
+      return $this->hasMany('App\SingleItem');
+    }
 }
