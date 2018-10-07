@@ -20,4 +20,5 @@ Route::group(['middleware' => 'auth'], function() {
 Route::group(['middleware' => 'guest'], function(){
   Route::resource('shops', 'ShopController', ['only' => ['index', 'show']]);
   Route::resource('items', 'ItemController', ['only' => ['index', 'show']]);
+  Route::resource('brands', 'BrandController', ['only' => ['index']]);
 });

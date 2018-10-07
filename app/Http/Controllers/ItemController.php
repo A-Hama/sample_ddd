@@ -13,7 +13,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::all
+        $items = Item::all;
     }
 
     /**
@@ -45,7 +45,7 @@ class ItemController extends Controller
      */
     public function show(itemId $itemId)
     {
-        $item = Item::findOrFail($itemId)
+        $item = Item::findOrFail($itemId);
     }
 
     /**
