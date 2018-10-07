@@ -11,14 +11,24 @@
 |
 */
 
-Route::group(['middleware' => 'auth'], function() {
-  Route::resource('shops', 'ShopController', ['except' => ['index', 'show']]);
-  Route::resource('items', 'ItemController', ['except' => ['index', 'show']]);
+
+Route::prefix('shops')->group(function(){
+  Route::group(['middleware' => 'auth'], function() {
+      Route::post('/{shopName}/items' , 'ItemController@create');
+      Route::post('/{shopName}/item/{id}/single_items' , 'SingleItemController@create');
+  });
+      Route::get('/', 'ShopController@index');
+      Route::get('items' , 'ItemController@index');
+      Route::get('items/{id}/single_items' , 'SingleItemController@index');
 });
 
-
-Route::group(['middleware' => 'guest'], function(){
-  Route::resource('shops', 'ShopController', ['only' => ['index', 'show']]);
-  Route::resource('items', 'ItemController', ['only' => ['index', 'show']]);
-  Route::resource('brands', 'BrandController', ['only' => ['index']]);
+Route::prefix('brands')->group(function() {
+    Route::get('/', 'BrandController@index');
+    Route::get('/{brandName}/items', 'ItemController@index');
+    Route::get('/{brandName}/items/{id}/single_items', 'SingleItemController@index');
 });
+
+Route::prefix('items')->group(function(){
+  Route::get('/', 'ItemController@index');
+});
+
