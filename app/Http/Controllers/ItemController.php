@@ -14,6 +14,7 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all;
+        #DDDではここをQueryModelに閉じ込める
     }
 
     /**
